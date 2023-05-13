@@ -113,14 +113,23 @@ function createGalleryImage(index) {
 
 var galleryFullScreen = document.getElementById("galleryFullScreen");
 var albumContainer = document.querySelectorAll('.albumContainer');
+
+function disableScorlling() {
+    document.body.classList.add("stop-scrolling");
+};
+
+function enableScrolling() {
+    document.body.classList.remove("stop-scrolling");
+};
+
 localStorage.galleryIndex = 0;
 var galleryINDEX = localStorage.galleryIndex;
 
 albumContainer.forEach(album => {
     album.onclick = () => {
+        disableScorlling();
         galleryFullScreen.style.display = "flex";
         createGalleryImage(album.id);
-        galleryFullScreen.requestFullscreen() || galleryFullScreen.webkitRequestFullscreen();
         var galleryIMAGES = document.querySelectorAll(".galleryImage");
         galleryIMAGES.forEach(img => {
             img.onclick = () => {
@@ -157,19 +166,21 @@ nextImage.onclick = () => {
 
 var closeGallery = document.getElementById('closeGallery')
 closeGallery.onclick = () => {
+    enableScrolling();
     galleryFullScreen.style.display = "none";
-    document.exitFullscreen() || document.webkitExitFullscreen();
     var galleryIMAGES = document.querySelectorAll(".galleryImage");
     galleryIMAGES.forEach(img => img.remove());
 };
 
-// document.addEventListener("keyup", function () {
-//     evt = window.event;
-//     if (evt.key === "Escape") {
-//         console.log('---------------------------------------------')
-//         galleryFullScreen.style.backgroundColor = "none";
-//     };
-// });
+document.addEventListener("keyup", function () {
+    evt = window.event;
+    if (evt.key === "Escape") {
+        enableScrolling()
+        galleryFullScreen.style.display = "none";
+        var galleryIMAGES = document.querySelectorAll(".galleryImage");
+        galleryIMAGES.forEach(img => img.remove());
+    };
+});
 
 
 // ############################# Courses #############################  //
