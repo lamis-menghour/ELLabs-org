@@ -17,11 +17,40 @@ var slideImage_4 = {
 };
 var slideIMAGES = [slideImage_1, slideImage_2, slideImage_3, slideImage_4];
 
+var prevSlide = document.querySelector('.slideShow .leftIcon');
+var nextSlide = document.querySelector('.slideShow .rightIcon');
+var slideIndex = 1;
 var slideImages = document.querySelector(".slideImages img");
 var slideText = document.querySelector(".slideText");
-var slideIndex = 0;
-function slideShow() {
-    setInterval(function () {
+
+prevSlide.onclick = () => {
+    stop();
+    if (slideIndex <= 0) {
+        slideIndex = slideIMAGES.length - 1;
+    }
+    else if (slideIndex > 0) {
+        slideIndex--;
+    }
+    slideImages.src = slideIMAGES[slideIndex].src;
+    slideText.textContent = slideIMAGES[slideIndex].text;
+    start();
+}
+nextSlide.onclick = () => {
+    stop();
+    if (slideIndex >= slideIMAGES.length - 1) {
+        slideIndex = 0;
+    }
+    else if (slideIndex < slideIMAGES.length) {
+        slideIndex++;
+    }
+    slideImages.src = slideIMAGES[slideIndex].src;
+    slideText.textContent = slideIMAGES[slideIndex].text;
+    start();
+}
+
+var slideShow;
+function start() {
+    slideShow = setInterval(function () {
         if (slideIndex < slideIMAGES.length) {
             slideImages.src = slideIMAGES[slideIndex].src;
             slideText.textContent = slideIMAGES[slideIndex].text;
@@ -30,9 +59,12 @@ function slideShow() {
             slideIndex = 0;
         };
     }, 5000);
-};
+}
+function stop() {
+    clearInterval(slideShow);
+}
 
-window.onload = slideShow();
+window.onload = start();
 
 // ############################# Gallery #############################  //
 var gallery = document.querySelector('#gallery');
@@ -222,9 +254,9 @@ var course_3 = {
         Arduino projects, using both languages interchangeably.`,
     price: "12500 DA"
 };
-var COURSES = [course_0, course_1, course_2, course_3, course_0, course_1, course_2, course_3];
+var COURSES = [course_0, course_1, course_2, course_3];
 
-var courses = document.getElementById("courses");
+var courses = document.querySelector('#courses')
 function createCourse(index) {
     // Create elemnets
     var course = document.createElement("div");
@@ -269,59 +301,16 @@ for (let i = 0; i < COURSES.length; i++) {
 };
 
 // #############################################################
-var courseRound;
-var mediaQueryCheck = window.matchMedia('(min-width: 750px)');
-function courseROUND() {
-    var course = document.querySelectorAll(".course");
-    course.forEach(e => {
-        e.style.transform = `translateX(${0}px)`;
-    });
+var prevCourse = document.querySelector('#coursesSlider .leftIcon i');
+var nextCourse = document.querySelector('#coursesSlider .rightIcon i');
+var coursesContainer = document.querySelector('.coursesContainer')
 
-    courseIndex = 0;
-    if (mediaQueryCheck.matches) {
-        courseRound = (COURSES.length - 1) / 2;
-        transX = 250
-    }
-    else {
-        courseRound = COURSES.length - 1;
-        transX = 230
-    };
-};
-
-window.addEventListener("load", courseROUND);
-window.addEventListener("resize", courseROUND);
-
-var courseIndex;
-var prevCourse = document.querySelector('#coursesSlider .leftIcon');
 prevCourse.onclick = () => {
-    var course = document.querySelectorAll(".course");
-    if (courseIndex > 0 && courseIndex <= courseRound) {
-        courseIndex -= 1;
-        course.forEach(e => {
-            e.style.transform += `translateX(${transX}px)`;
-        })
-        console.log("prev Course");
-    }
-    else if (courseIndex <= 0) {
-        courseIndex = 0;
-        console.log("done prev Course");
-    };
+    coursesContainer.scrollLeft -= 220;
 };
 
-var nextCourse = document.querySelector('#coursesSlider .rightIcon');
 nextCourse.onclick = () => {
-    var course = document.querySelectorAll(".course");
-    if (courseIndex < courseRound) {
-        courseIndex += 1;
-        course.forEach(e => {
-            e.style.transform += `translateX(-${transX}px)`;
-        });
-        console.log("next Course");
-    }
-    else {
-        courseIndex = courseRound;
-        console.log("done next Course");
-    };
+    coursesContainer.scrollLeft += 220;
 };
 
 // ############################# Course Info #############################  //
