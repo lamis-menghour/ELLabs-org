@@ -26,7 +26,6 @@ body {
     text-transform: uppercase;
     z-index: 100;
     box-shadow: rgba(7, 7, 5, 0.361) 0px 5px 15px;
-
 }
 
 /* ############## nav-1 ############## */
@@ -147,14 +146,14 @@ body {
 }
 
 /* ######################### Slide Show ######################### */
-.slideShow {
+#section-1.slideShow {
     width: 100vw;
     height: 85vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 100px;
     transition: 0.5s;
+    margin-top: 100px;
 }
 
 /* ######################### Slide Show Icons ######################### */
@@ -191,10 +190,10 @@ body {
 }
 
 .slideImages {
-    position: absolute;
     width: 100%;
     height: 100%;
     transition: 0.5s;
+    position: absolute;
 }
 
 .slideImages img {
@@ -212,7 +211,7 @@ body {
     font-weight: 600;
     text-align: left;
     color: #f6f5f5ed;
-    animation: showUp 5s infinite;
+    animation: showUp 6s infinite;
     transform: translate(0px, -30px);
     z-index: 30;
 }
@@ -233,10 +232,9 @@ body {
         opacity: 1;
         transform: translate(0px, -30px);
     }
-
 }
 
-/* #########################ELLabs ######################### */
+/* ######################### ELLabs ######################### */
 .ELLabs {
     width: 100%;
     height: max-content;
@@ -481,6 +479,7 @@ body {
     transform: rotate(5deg) translateX(-150px) scale(1.2);
 }
 
+
 /* ################################ */
 .stop-scrolling {
     overflow: hidden;
@@ -682,13 +681,12 @@ body {
 
 .course:hover {
     cursor: pointer;
-    filter: brightness(.8);
+    filter: brightness(0.8);
 }
 
 .courseImageContainer {
     width: 210px;
     height: 180px;
-    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -819,7 +817,6 @@ body {
     background-color: rgb(211, 0, 0);
     border: 2px solid rgba(0, 0, 0, 0.25);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
-
     text-shadow: #151414bd 3px 5px 2px;
     color: white;
     transform: rotate(-45deg);
@@ -875,7 +872,6 @@ body {
 .soonImage img {
     width: 100%;
     height: 100%;
-    border-radius: 25px;
     border-radius: 15px;
     border: 3px solid #0e2334;
 }
@@ -923,6 +919,7 @@ body {
     0% {
         transform: translateY(30px) scale(0.8);
     }
+
     50% {
         transform: translateY(-30px) scale(0.8);
     }
@@ -953,39 +950,18 @@ body {
 }
 
 /* ############################## Counting #################################### */
-#section-5 {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 0px;
-    padding: 20px 0px;
-    gap: 20px;
-    border: 2px solid #33333340;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
-    background-color: #f6f5f5ed;
-}
-
-#section-5 .subSectionTitle {
-    color: #0c3355e3;
-    text-transform: capitalize;
-    /* font-size: 46px; */
-    font-weight: 100;
-    width: 50%;
-    height: max-content;
-    padding: 10px;
-}
-
-#counting {
+#section-5.counting {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 100%;
     height: max-content;
     padding: 20px 0px;
-    gap: 20px;
+    width: 100%;
+    margin: 40px 0px;
+    border: 2px solid #33333340;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    background-color: #f6f5f5ed;
 }
 
 .startCounting {
@@ -993,31 +969,30 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border-radius: 35px 35px 5px 5px;
+    border-radius: 5px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
-    width: max-content;
-    height: 130px;
+    width: 180px;
+    height: 150px;
     padding: 10px 20px;
     background-image: linear-gradient(to left top, #dab401, #e0a400, #e59300, #e98200, #eb7012);
+    border: 2px solid #15110187;
 }
 
 [class*="count-"] {
     width: 90%;
     height: max-content;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 10px;
     font-size: 48px;
-    /* color: #0c3355e3; */
-    /* color: #f6f5f5ed; */
     color: #000000e3;
-
 }
 
 .countFooter {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: max-content;
@@ -1089,7 +1064,7 @@ body {
     #section-1.slideShow {
         height: 60vh;
     }
-    
+
     .slideShow .leftIcon,
     .slideShow .rightIcon {
         margin: 0px 20px;
@@ -1147,7 +1122,7 @@ body {
         width: max-content;
         transform: scale(0.8);
     }
-    
+
     /* ########## Gallery Full Screen ######### */
     #galleryFullScreen {
         justify-content: center;
@@ -1174,8 +1149,8 @@ body {
 
 
     /* ######### Counting ########## */
-    #counting {
-        width: 90%;
+    #section-5.counting {
+        width: 100%;
         flex-direction: column;
         gap: 40px;
     }
@@ -1206,7 +1181,6 @@ body {
         flex-direction: column;
         align-items: center;
         height: max-content;
-
     }
 
     .courseInfoImage {
@@ -1227,6 +1201,7 @@ body {
         justify-content: center;
     }
 
+    /* ########## Soon ######### */
     #soon {
         height: max-content;
         flex-direction: column;
