@@ -19,35 +19,10 @@ var slideIMAGES = [slideImage_1, slideImage_2, slideImage_3, slideImage_4];
 
 var prevSlide = document.querySelector('.slideShow .leftIcon');
 var nextSlide = document.querySelector('.slideShow .rightIcon');
-var slideIndex = 1;
 var slideImages = document.querySelector(".slideImages img");
 var slideText = document.querySelector(".slideText");
 
-prevSlide.onclick = () => {
-    stop();
-    if (slideIndex <= 0) {
-        slideIndex = slideIMAGES.length - 1;
-    }
-    else if (slideIndex > 0) {
-        slideIndex--;
-    }
-    slideImages.src = slideIMAGES[slideIndex].src;
-    slideText.textContent = slideIMAGES[slideIndex].text;
-    start();
-}
-nextSlide.onclick = () => {
-    stop();
-    if (slideIndex >= slideIMAGES.length - 1) {
-        slideIndex = 0;
-    }
-    else if (slideIndex < slideIMAGES.length) {
-        slideIndex++;
-    }
-    slideImages.src = slideIMAGES[slideIndex].src;
-    slideText.textContent = slideIMAGES[slideIndex].text;
-    start();
-}
-
+var slideIndex = 1;
 var slideShow;
 function start() {
     slideShow = setInterval(function () {
@@ -59,12 +34,39 @@ function start() {
             slideIndex = 0;
         };
     }, 5000);
-}
+};
+
 function stop() {
     clearInterval(slideShow);
-}
+};
 
 window.onload = start();
+
+prevSlide.onclick = () => {
+    stop();
+    if (slideIndex <= 0) {
+        slideIndex = slideIMAGES.length - 1;
+    }
+    else if (slideIndex > 0) {
+        slideIndex--;
+    };
+    slideImages.src = slideIMAGES[slideIndex].src;
+    slideText.textContent = slideIMAGES[slideIndex].text;
+    start();
+};
+
+nextSlide.onclick = () => {
+    stop();
+    if (slideIndex >= slideIMAGES.length - 1) {
+        slideIndex = 0;
+    }
+    else if (slideIndex < slideIMAGES.length) {
+        slideIndex++;
+    };
+    slideImages.src = slideIMAGES[slideIndex].src;
+    slideText.textContent = slideIMAGES[slideIndex].text;
+    start();
+};
 
 // ############################# Gallery #############################  //
 var gallery = document.querySelector('#gallery');
@@ -112,7 +114,7 @@ function createAlbum(index) {
     albumTitle.className = "albumTitle";
     album.className = "album";
 
-    albumContainer.setAttribute('id', index)
+    albumContainer.setAttribute('id', index);
     albumTitle.textContent = ALBUM[index].title;
     for (let i = 0; i < 3; i++) {
         var album_image = document.createElement("img");
@@ -156,7 +158,6 @@ function enableScrolling() {
 
 localStorage.galleryIndex = 0;
 var galleryINDEX = localStorage.galleryIndex;
-
 albumContainer.forEach(album => {
     album.onclick = () => {
         disableScorlling();
@@ -324,15 +325,13 @@ function createCourseInfo(index) {
     courseInfoTitle.textContent = COURSES[index].title;
     courseInfoDscp.textContent = COURSES[index].details;
     courseInfoPrice.textContent = COURSES[index].price;
-}
+};
 
 var course = document.querySelectorAll('.course');
 course.forEach(e => {
     e.addEventListener("click", function () {
         var courseInfo = document.querySelector('#courseInfo');
         createCourseInfo(e.id);
-        // courseInfo.classList.remove('hide');
-        // courseInfo.classList.add('show');
         courseInfo.classList.toggle('show');
 
         var y = (courseInfo.getBoundingClientRect().top || courseInfo.offsetTop) + window.scrollY - 110;
@@ -340,7 +339,7 @@ course.forEach(e => {
             top: y,
             behavior: 'smooth'
         });
-    })
+    });
 });
 
 // ############################# Coming Soon #############################  //
@@ -363,7 +362,7 @@ var SOON = [soon_1, soon_2, soon_3];
 
 
 // ############################# Counting #############################  //
-var countContainer = document.getElementById("counting");
+var countContainer = document.querySelector("#section-5.counting");
 var COUNTS = document.querySelectorAll(".counts");
 var started = false; // function started ? NO
 
@@ -403,7 +402,6 @@ function goUPFunction() {
     });
 };
 goUP.addEventListener("click", goUPFunction);
-
 
 
 // ############################# END OF CODE #############################  //
